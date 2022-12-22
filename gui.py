@@ -106,7 +106,7 @@ Determine Winner:
 
     # Runs main part of game until there is a winner
     def play(self):
-        self.new_section('start')
+        self.new_section('start game')
         round_counter = 1
         while self.players[0].wins < 2 and self.players[1].wins < 2:
             self.new_section('Round ' + str(round_counter))
@@ -117,6 +117,7 @@ Determine Winner:
     
     def get_selections(self):
         self.players[0].set_selection()
+        time.sleep(1)
         self.players[1].set_selection()
         print(f'{self.players[0].selection} vs {self.players[1].selection}')
         time.sleep(1)

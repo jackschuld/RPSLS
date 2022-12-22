@@ -1,3 +1,6 @@
+from random import choice
+
+
 class Player:
 
     def __init__(self, name):
@@ -10,14 +13,15 @@ class Player:
 
     def set_selection(self):
         selection = ''
-        while selection not in self.gestures:
-            print(f'\n{self.name}\'s turn!')
-            for gesture in self.gestures:
-                print(f'- ' + gesture)
-            selection = input(f'\n{self.name} - Type out the option from above that you want to select: ').title()
+        print(f'\n{self.name}\'s turn!')
+        for gesture in self.gestures:
+            print(f'- ' + gesture)
+        print(f'\n{self.name} - Type out the option from above that you want to select: ')
+        selection = choice([key for key in self.gestures.keys()])
         self.selection = selection
         input('\n[ Press Enter to Continue ]')
         print('\n')
+
 
 
     
