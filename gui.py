@@ -112,8 +112,9 @@ Determine Winner:
             self.new_section('Round ' + str(round_counter))
             self.get_selections()
             self.compare_selections()
+            self.scoreboard()
             round_counter += 1
-        
+            
     
     def get_selections(self):
         self.players[0].set_selection()
@@ -125,15 +126,21 @@ Determine Winner:
 
     # Compares selections to give a player a point or detect a draw
     def compare_selections(self):
+
+        # If same selections, then do not add any points
         if self.players[0].selection == self.players[1].selection:
             print('Draw!\nGo again\n')
+
+        # If player 2's selection is in player 1's selection's value (ie. a list of winning options for the selection), then player 1 wins
         elif self.players[1].selection in self.players[0].gestures[self.players[0].selection]:
             print(f'{self.players[0].name} wins this round!')
             self.players[0].wins += 1
+
+        # If not the same and not in player 1's selection's value list, then player 2 must be the winner
         else:
             print(f'{self.players[1].name} wins this round!')
             self.players[1].wins += 1
-        self.scoreboard()
+        
 
 
     def scoreboard(self):
